@@ -11,14 +11,15 @@
 
   <title>Hello, world!</title>
 </head>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+<body class="bg-secondary">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="">Dashboard</a>
+                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">My Courses</a>
+                <a class="nav-link" href="{% url 'my_courses' %}">My Courses</a>
             </li>
         </ul>
     </div>
@@ -30,7 +31,7 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link disabled text-muted" href="">Welcome, {{ request.user }}</a>
+              <a class="nav-link" href="">Welcome, {{ request.user }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Log out</a>
@@ -38,7 +39,9 @@
         </ul>
     </div>
 </nav>
-  {% block content %}{% endblock %}
+  {% block content %}
+  
+  {% endblock %}
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

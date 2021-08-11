@@ -1,2 +1,42 @@
 {% extends 'courses/base.html' %}
 
+{% block content %}
+
+<div class="container mt-5 py-3 border border-dark rounded bg-dark text-white">
+
+    <p>Name: {{ cd.name }}</p>
+    <p>Description: {{ cd.desc }}</p>
+    <p>Type: {{ cd.type }}</p>
+    <p>Price: {{ cd.price }}</p>
+    {% if cd.is_past_due %}
+        <p>Registration to this course has ended.</p>
+        <p><a href="{% url 'dashboard' %}">See other courses</a></p>
+    {% else %}
+    <a class="badge badge-primary text-wrap p-2" href="{% url 'enroll' %}" style="font-size: 20px;">Enroll Now</a>
+    {% endif %}
+    <br>
+    <br>
+    <p>Student list:</p>
+    {% if students.count == 0 %}
+    <p>There is no student currently enrolled to this class.</p>
+    {% else %}
+    <table class="table table-striped table-dark" style="max-width: 25%;">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <th scope="row">{{ student.id }}</th>
+                <td>{{ student }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+{% endblock %}
