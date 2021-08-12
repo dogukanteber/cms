@@ -9,10 +9,14 @@
     <p>Type: {{ cd.type }}</p>
     <p>Price: {{ cd.price }}</p>
     {% if cd.is_past_due %}
-        <p>Registration to this course has ended.</p>
-        <p><a href="{% url 'dashboard' %}">See other courses</a></p>
+    <p>Registration to this course has ended.</p>
+    <p><a href="{% url 'dashboard' %}">See other courses</a></p>
+    {% elif is_already_enrolled %}
+    <div class="alert alert-danger" role="alert">
+        You have already enrolled to the course.
+      </div>
     {% else %}
-    <a class="badge badge-primary text-wrap p-2" href="{% url 'enroll' %}" style="font-size: 20px;">Enroll Now</a>
+    <a class="badge badge-primary text-wrap p-2" href="{% url 'enroll_course' cd.id %}" style="font-size: 20px;">Enroll Now</a>
     {% endif %}
     <br>
     <br>

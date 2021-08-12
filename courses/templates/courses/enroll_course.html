@@ -1,0 +1,18 @@
+{% extends 'courses/base.html' %}
+
+{% block content%}
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col-6">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <div class="form-group pt-4">
+                        <button class="btn btn-primary" type="submit">Enroll</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

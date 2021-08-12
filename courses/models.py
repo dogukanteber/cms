@@ -18,16 +18,20 @@ class Course(models.Model):
     due_date = models.DateTimeField()
     active = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    students = models.ManyToManyField(User)
+    students = models.ManyToManyField(User, blank=True)
 
     def __str__(self):
         return self.name
-
+    
     @property
     def is_past_due(self):
         return timezone.now() > self.due_date
 
-class UserInfo(models.Model):
-    tel_no = models.CharField(max_length=11)
+
+class UserDetail(models.Model):
+    telephone_number = models.CharField(max_length=11)
     address = models.CharField(max_length=512)
     profession = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.profession
